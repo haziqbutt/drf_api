@@ -25,9 +25,17 @@ SECRET_KEY = 'django-insecure-1ofz9cci=i+v)7fi+_)9_upa)^2e%*n&u)u764f83g)0&f+7@l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "https://4268-182-177-114-28.ngrok-free.app", "http://localhost:3000/"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    ".vercel.app"
+]
 
-CSRF_TRUSTED_ORIGINS = ["https://4268-182-177-114-28.ngrok-free.app", "http://localhost:3000/"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "https://*.vercel.app"
+]
+
 # Application definition
  
 INSTALLED_APPS = [
@@ -49,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'AzeemProject.urls'
@@ -130,3 +139,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
