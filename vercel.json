@@ -4,14 +4,25 @@
       {
         "src": "AzeemProject/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "50mb" }
+        "config": { "maxLambdaSize": "15mb", "runtime": "python" }
+      },
+      {
+        "src": "build_files.sh",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "ui/staticfiles"
+        }
       }
     ],
     "routes": [
       {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
         "src": "/(.*)",
         "dest": "AzeemProject/wsgi.py"
       }
-    ]
+    ],
+    "outputDirectory": "ui/staticfiles"
   }
-  
